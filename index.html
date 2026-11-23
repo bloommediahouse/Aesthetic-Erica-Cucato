@@ -90,6 +90,21 @@ html{scroll-behavior:smooth}
 .hr.today span:first-child::after{content:"  · today";font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 #mobileMenu[hidden]{display:none}
 @media (min-width:901px){#mobileMenu{display:none !important}}
+
+.featToggle{display:none}
+@media (max-width:900px){
+  .featToggle{display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-height:76px;padding:16px 24px;background:#FFFFFF;border:0;border-radius:22px;box-shadow:0 20px 40px -32px rgba(59,42,38,.35);cursor:pointer;text-align:left;font-family:'Jost',sans-serif}
+  .featToggle .chev{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+  #feat.open .featToggle .chev{transform:rotate(180deg)}
+  #feat .featGrid{display:none !important}
+  #feat.open .featGrid{display:grid !important;margin-top:14px;grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px !important}
+  #feat.open .featGrid > a{animation:pop .5s cubic-bezier(.2,.7,.2,1) both;padding:20px 18px !important;gap:8px !important}
+  #feat.open .featGrid > a:nth-child(2){animation-delay:.06s}
+  #feat.open .featGrid > a:nth-child(3){animation-delay:.12s}
+  #feat.open .featGrid > a:nth-child(4){animation-delay:.18s}
+  #feat .featGrid > a span:first-of-type{font-size:21px !important;line-height:1.15}
+  #feat .featGrid > a span:last-of-type{font-size:13px !important}
+}
 </style>
 </head>
 <body>
@@ -190,8 +205,15 @@ html{scroll-behavior:smooth}
   </section>
 
   <!-- Feature cards (overlap) -->
-  <section class="pad" style="max-width: 1280px; margin: -80px auto 0; padding: 0 48px; position: relative; z-index: 2">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px">
+  <section id="feat" class="pad" style="max-width: 1280px; margin: -80px auto 0; padding: 0 48px; position: relative; z-index: 2">
+    <button type="button" id="featToggle" class="featToggle" aria-expanded="false" aria-controls="featGrid">
+      <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px">
+        <span style="font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: #7A4F3A">What we do</span>
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #3B2A26">Our services</span>
+      </span>
+      <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B2A26" stroke-width="1.5" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+    </button>
+    <div id="featGrid" class="featGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px">
       <a href="#services" class="lift rv" style="text-decoration: none; color: #3B2A26; background: #FFFFFF; border-radius: 22px; padding: 30px 26px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 20px 40px -32px rgba(59,42,38,.35)">
         <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#9A6A33" stroke-width="1.3" aria-hidden="true"><circle cx="16" cy="14" r="8"></circle><path d="M12 13h.01M20 13h.01M13 17c1.6 1.4 4.4 1.4 6 0"></path><path d="M6 28c2-4 6-6 10-6s8 2 10 6"></path></svg>
         <span style="font-family: 'Cormorant Garamond', serif; font-size: 26px">Facials</span>
@@ -521,6 +543,9 @@ html{scroll-behavior:smooth}
   burger.addEventListener('click',function(){var open=menu.hasAttribute('hidden');if(open){menu.removeAttribute('hidden')}else{menu.setAttribute('hidden','')}burger.setAttribute('aria-expanded',open?'true':'false')});
   menu.querySelectorAll('[data-close]').forEach(function(a){a.addEventListener('click',function(){menu.setAttribute('hidden','');burger.setAttribute('aria-expanded','false')})});
 
+
+  var feat=document.getElementById('feat'),ft=document.getElementById('featToggle');
+  ft.addEventListener('click',function(){var o=feat.classList.toggle('open');ft.setAttribute('aria-expanded',o?'true':'false')});
   var tabs=document.querySelectorAll('.tab'),cards=document.querySelectorAll('.svc');
   tabs.forEach(function(t){t.addEventListener('click',function(){
     var cat=t.getAttribute('data-cat');
