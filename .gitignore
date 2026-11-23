@@ -1,0 +1,22 @@
+# Secrets and local environment — never commit
+.env
+.env.*
+*.pem
+*.key
+secrets/
+credentials*.json
+
+# Dependencies and build output
+node_modules/
+dist/
+.cache/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log

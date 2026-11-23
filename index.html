@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <meta name="googlebot" content="noindex, nofollow">
@@ -11,124 +13,12 @@
 <meta property="og:description" content="Facial, body and wellness aesthetics in Deerfield Beach, FL. Book online.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#3B2A26">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%233B2A26'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='28' fill='%23E2B77A'%3EEC%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500&amp;display=swap">
-<style>
-body{margin:0;background:#F7F0EB}
-a{color:#7A4F3A}a:hover{color:#3B2A26}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes floaty{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18px,-22px) scale(1.06)}}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes drip{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.08)}}
-@keyframes shimmer{from{transform:translateX(-120%)}to{transform:translateX(220%)}}
-@keyframes rise{from{opacity:0;transform:translateY(46px)}to{opacity:1;transform:none}}
-@keyframes zoomIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
-@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
-
-.in1{animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) .1s both}
-.in2{animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) .25s both}
-.in3{animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) .4s both}
-.in4{animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) .55s both}
-.inImg{animation:zoomIn 1.3s cubic-bezier(.2,.7,.2,1) .2s both}
-.spin{animation:spin 22s linear infinite}
-.blob{animation:floaty 12s ease-in-out infinite}
-.blob2{animation:floaty 15s ease-in-out -5s infinite}
-.track{animation:marquee 32s linear infinite}
-.pop{animation:pop .55s cubic-bezier(.2,.7,.2,1) both}
-
-@supports (animation-timeline: view()){
-  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
-  .rvz{animation:zoomIn linear both;animation-timeline:view();animation-range:entry 0% entry 50%}
-}
-
-.btn{position:relative;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease,background .35s ease}
-.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(59,42,38,.45)}
-.btn::after{content:"";position:absolute;top:0;left:0;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-120%)}
-.btn:hover::after{animation:shimmer .9s ease}
-.lift{transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease}
-.lift:hover{transform:translateY(-8px);box-shadow:0 30px 50px -28px rgba(59,42,38,.35)}
-.navlink{position:relative;text-decoration:none;color:#3B2A26}
-.navlink::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:100%;background:#9A6A33;transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
-.navlink:hover::after{transform:scaleX(1)}
-.tab{transition:background .3s ease,color .3s ease,border-color .3s ease}
-.tipIcon{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.tip:hover .tipIcon{transform:translateY(-6px) rotate(-6deg)}
-.arch{border-radius:999px 999px 28px 28px}
-.photo{background:radial-gradient(120% 80% at 30% 20%,#F3DCD0 0%,#E3BFAE 45%,#C99A86 100%)}
-.photo2{background:radial-gradient(110% 90% at 70% 25%,#F6E6DA 0%,#E8CDBE 50%,#B98A78 100%)}
-.honey{background:linear-gradient(180deg,#E9B565 0%,#C98A3A 60%,#9A6A33 100%)}
-
-.navLinks{display:flex}
-.burger{display:none}
-@media (max-width:900px){
-  .navLinks{display:none}
-  .burger{display:inline-flex}
-  .heroGrid{grid-template-columns:minmax(0,1fr) !important}
-  .heroArt{min-height:440px !important}
-  .aboutGrid{grid-template-columns:minmax(0,1fr) !important}
-  .h1{font-size:52px !important}
-  .h2{font-size:42px !important}
-  .pad{padding-left:22px !important;padding-right:22px !important}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none !important;transition:none !important}
-}
-
-.tab{cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;padding:13px 26px;min-height:44px;border-radius:999px;border:1px solid rgba(59,42,38,.25);background:transparent;color:#3B2A26}
-.tab:hover{border-color:#3B2A26}
-.tab.active{border-color:#3B2A26;background:#3B2A26;color:#F7F0EB}
-.svc{background:#FFFFFF;border-radius:26px;padding:34px;display:flex;flex-direction:column;gap:16px;box-shadow:0 20px 40px -34px rgba(59,42,38,.4)}
-.svc[hidden]{display:none}
-.hr{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(59,42,38,.1);font-size:16px;color:#3B2A26}
-.hr.today{color:#7A4F3A;font-weight:500}
-.hr.today span:first-child::after{content:"  · today";font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-#mobileMenu[hidden]{display:none !important}
-@media (min-width:901px){#mobileMenu{display:none !important}}
-
-.featToggle{display:none}
-@media (max-width:900px){
-  .featToggle{display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-height:76px;padding:16px 24px;background:#FFFFFF;border:0;border-radius:22px;box-shadow:0 20px 40px -32px rgba(59,42,38,.35);cursor:pointer;text-align:left;font-family:'Jost',sans-serif}
-  .featToggle .chev{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
-  #feat.open .featToggle .chev{transform:rotate(180deg)}
-  #feat .featGrid{display:none !important}
-  #feat.open .featGrid{display:grid !important;margin-top:14px;grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px !important}
-  #feat.open .featGrid > a{animation:pop .5s cubic-bezier(.2,.7,.2,1) both;padding:20px 18px !important;gap:8px !important}
-  #feat.open .featGrid > a:nth-child(2){animation-delay:.06s}
-  #feat.open .featGrid > a:nth-child(3){animation-delay:.12s}
-  #feat.open .featGrid > a:nth-child(4){animation-delay:.18s}
-  #feat .featGrid > a span:first-of-type{font-size:21px !important;line-height:1.15}
-  #feat .featGrid > a span:last-of-type{font-size:13px !important}
-}
-
-.burger .l1,.burger .l2{transition:transform .35s cubic-bezier(.2,.7,.2,1);transform-origin:12px 12px}
-.burger[aria-expanded="true"] .l1{transform:translateY(4px) rotate(45deg)}
-.burger[aria-expanded="true"] .l2{transform:translateY(-4px) rotate(-45deg)}
-
-@media (max-width:1024px){
-  #membership{padding-left:22px !important;padding-right:22px !important}
-  .memBox{padding:64px 40px !important;border-radius:30px !important;text-align:center}
-  .memGrid{grid-template-columns:minmax(0,1fr) !important;gap:40px !important;justify-items:center}
-  .memText{align-items:center;max-width:620px}
-  .memText p{margin-left:auto !important;margin-right:auto !important}
-  .memCard{width:100%;max-width:520px;align-items:center}
-  .memPrice{justify-content:center;flex-wrap:wrap}
-  .memList{width:100%;max-width:400px;margin:0 auto;text-align:left;justify-items:start}
-  .memCard a{width:100%}
-}
-@media (max-width:600px){
-  .memBox{padding:52px 20px !important}
-  .memText h2{font-size:38px !important}
-  .memCard{padding:30px 20px !important}
-  .memPrice span:first-child{font-size:72px !important}
-  .memList{grid-template-columns:minmax(0,1fr) !important;max-width:220px}
-}
-</style>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js" defer></script>
 </head>
 <body>
 <div style="font-family: 'Jost', system-ui, sans-serif; color: #3B2A26; background: #F7F0EB; width: 100%; overflow-x: hidden">
@@ -555,40 +445,20 @@ html{scroll-behavior:smooth}
       </div>
       <div style="border-top: 1px solid rgba(230,216,208,.18); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #C9B8AE">
         <span>© <span id="year">2026</span> Aesthetic Erica Cucato. All rights reserved.</span>
+        <span style="display: flex; flex-wrap: wrap; gap: 20px"><a href="privacy.html" style="color: #E6D8D0">Privacy Policy</a><button type="button" id="cookieSettings" class="linkBtn" style="text-decoration: underline">Cookie settings</button></span>
         <span>608 Federal Highway, Deerfield Beach, FL 33441</span>
       </div>
     </div>
   </footer>
 </div>
-<script>
-(function(){
-  var burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
-  burger.addEventListener('click',function(){var open=menu.hasAttribute('hidden');if(open){menu.removeAttribute('hidden')}else{menu.setAttribute('hidden','')}burger.setAttribute('aria-expanded',open?'true':'false');burger.setAttribute('aria-label',open?'Close menu':'Open menu')});
-  menu.querySelectorAll('[data-close]').forEach(function(a){a.addEventListener('click',function(){menu.setAttribute('hidden','');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu')})});
 
-
-  var feat=document.getElementById('feat'),ft=document.getElementById('featToggle');
-  ft.addEventListener('click',function(){var o=feat.classList.toggle('open');ft.setAttribute('aria-expanded',o?'true':'false')});
-  var tabs=document.querySelectorAll('.tab'),cards=document.querySelectorAll('.svc');
-  tabs.forEach(function(t){t.addEventListener('click',function(){
-    var cat=t.getAttribute('data-cat');
-    tabs.forEach(function(o){var on=o===t;o.classList.toggle('active',on);o.setAttribute('aria-selected',on?'true':'false')});
-    var i=0;cards.forEach(function(c){
-      var show=cat==='all'||c.getAttribute('data-cat')===cat;
-      if(show){c.removeAttribute('hidden');c.classList.remove('pop');void c.offsetWidth;c.style.animationDelay=(i++*90)+'ms';c.classList.add('pop')}else{c.setAttribute('hidden','')}
-    });
-  })});
-
-  var d=new Date().getDay(),row=document.querySelector('.hr[data-day="'+d+'"]');if(row)row.classList.add('today');
-  var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
-
-  if(!(window.CSS&&CSS.supports&&CSS.supports('animation-timeline','view()'))&&'IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var els=document.querySelectorAll('.rv,.rvz');
-    els.forEach(function(e){e.style.opacity='0';e.style.transform=e.classList.contains('rvz')?'scale(.94)':'translateY(46px)';e.style.transition='opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1)'});
-    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.style.opacity='1';x.target.style.transform='none';io.unobserve(x.target)}})},{threshold:.12});
-    els.forEach(function(e){io.observe(e)});
-  }
-})();
-</script>
+<div id="cookieBanner" class="cc" role="dialog" aria-live="polite" aria-labelledby="ccTitle" hidden>
+  <h2 id="ccTitle">Your privacy</h2>
+  <p>We’d like to use analytics cookies to understand how visitors use this site, so we can improve it. They’re only set if you accept. Learn more in our <a href="privacy.html">Privacy Policy</a>.</p>
+  <div class="ccRow">
+    <button type="button" id="ccAccept" class="ccYes">Accept analytics</button>
+    <button type="button" id="ccReject" class="ccNo">Reject</button>
+  </div>
+</div>
 </body>
 </html>

@@ -1,26 +1,54 @@
 # Aesthetic Erica Cucato — Website
 
-Static, single-page website for **Aesthetic Erica Cucato**, a facial, body and wellness aesthetics studio in Deerfield Beach, Florida.
+Static website for **Aesthetic Erica Cucato**, a facial, body and wellness aesthetics studio in Deerfield Beach, Florida.
+Built and maintained by Bloom Media House.
 
-- Plain HTML, CSS and JavaScript. No build step, no dependencies.
-- Animations: staggered hero entrance, rotating badge, floating color blobs, marquees, scroll reveals, hover effects and filtered service cards.
-- Responsive with a mobile menu. Respects `prefers-reduced-motion`.
-- Online booking via [Fresha](https://www.fresha.com/a/aesthetic-erica-cucato-deerfield-beach-florida-eua-608-federal-highway-nnwquaw9).
+- Plain HTML, CSS and JavaScript. **No build step and no third-party packages.**
+- Fonts are self-hosted (SIL Open Font License, see `assets/fonts/`). No requests to Google Fonts.
+- Booking through [Fresha](https://www.fresha.com/a/aesthetic-erica-cucato-deerfield-beach-florida-eua-608-federal-highway-nnwquaw9).
+- Cookie consent banner with optional Google Analytics 4 (loads **only** after the visitor accepts).
 
-## Publish on GitHub Pages
+## Structure
 
-1. Create a new repository on GitHub (for example `erica-cucato-site`).
-2. Upload `index.html` and `README.md` to the repository root (**Add file › Upload files**).
-3. Go to **Settings › Pages**, set **Source** to *Deploy from a branch*, choose `main` and `/ (root)`, then **Save**.
-4. After a minute or two the site will be live at `https://<your-username>.github.io/erica-cucato-site/`.
+```
+index.html            Home page
+privacy.html          Privacy Policy (fill in the highlighted placeholders before launch)
+assets/css/style.css  All styles (fonts, animations, responsive rules, cookie banner)
+assets/js/config.js   Site settings — Google Analytics ID goes here
+assets/js/main.js     Menu, service filters, opening hours, scroll reveals, cookie consent
+assets/fonts/         Self-hosted .woff2 fonts + licenses
+assets/favicon.svg    Browser tab icon
+```
 
-To use a custom domain (e.g. `ericacucato.com`), add it under **Settings › Pages › Custom domain** and follow GitHub's DNS instructions.
+## Security notes
 
-## Editing
+- Content-Security-Policy and Referrer-Policy are set with `<meta>` tags on every page. Only this site, and Google Analytics once enabled, may load scripts.
+- GitHub Pages cannot send custom HTTP headers (`X-Frame-Options`, `frame-ancestors`, `HSTS`, `X-Content-Type-Options`). To add them, put the site behind Cloudflare with a custom domain, or move hosting to Cloudflare Pages / Netlify.
+- Never commit secrets. `.gitignore` blocks `.env` and key files; this site needs none.
+- Recommended repository settings: require 2FA for all organization members, protect the `main` branch, and review collaborators and app access regularly.
 
-- **Photos:** search `index.html` for `Replace with photo` / `Replace with studio photo`. Add your images to the repo (e.g. `images/erica.jpg`) and place an `<img src="images/erica.jpg" alt="Erica Cucato" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">` inside that frame (replacing the label).
-- **Prices and services:** each service card is an `<article class="svc">` in the *Services* section.
-- **Hours:** rows with `class="hr"` in the *Visit* section, plus the ticker at the top of the page.
+## Cookie banner and analytics
+
+1. Create a Google Analytics 4 property and copy its Measurement ID (`G-XXXXXXXXXX`).
+2. Paste it into `assets/js/config.js` → `analyticsId`.
+3. Commit. From then on the banner appears to new visitors; Analytics loads only after **Accept analytics**. **Reject** loads nothing. Visitors can change their choice via **Cookie settings** in the footer. The choice is remembered for 12 months.
+
+While `analyticsId` is empty, no cookies are set and the banner stays hidden. To preview the banner, open the site with `?cookies=preview` at the end of the URL.
+
+## Launch checklist (technical)
+
+- [ ] Replace the photo placeholders (search `Replace with`) with approved, optimized images (`.webp`, ≤ 300 KB each) in `assets/img/`.
+- [ ] Fill the placeholders in `privacy.html` (date, email, retention).
+- [ ] Custom domain: add it in **Settings › Pages**, configure DNS, tick **Enforce HTTPS**, and verify the domain in the organization's Pages settings.
+- [ ] Remove the `robots` / `googlebot` `noindex` meta tags from `index.html` (keep `privacy.html` as is or remove there too).
+- [ ] Add LocalBusiness structured data (JSON-LD) back to `index.html`.
+- [ ] Add the GA4 ID to `config.js` (if the client approved analytics).
+- [ ] Submit the site to Google Search Console and link it from the Google Business Profile.
+- [ ] Test on iPhone, Android, tablet and desktop; click every booking link.
+
+## Publishing on GitHub Pages
+
+**Settings › Pages** → *Deploy from a branch* → `main` / `(root)`. Every push to `main` goes live within a minute or two.
 
 ## Contact
 
