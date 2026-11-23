@@ -88,7 +88,7 @@ html{scroll-behavior:smooth}
 .hr{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(59,42,38,.1);font-size:16px;color:#3B2A26}
 .hr.today{color:#7A4F3A;font-weight:500}
 .hr.today span:first-child::after{content:"  · today";font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-#mobileMenu[hidden]{display:none}
+#mobileMenu[hidden]{display:none !important}
 @media (min-width:901px){#mobileMenu{display:none !important}}
 
 .featToggle{display:none}
@@ -105,6 +105,10 @@ html{scroll-behavior:smooth}
   #feat .featGrid > a span:first-of-type{font-size:21px !important;line-height:1.15}
   #feat .featGrid > a span:last-of-type{font-size:13px !important}
 }
+
+.burger .l1,.burger .l2{transition:transform .35s cubic-bezier(.2,.7,.2,1);transform-origin:12px 12px}
+.burger[aria-expanded="true"] .l1{transform:translateY(4px) rotate(45deg)}
+.burger[aria-expanded="true"] .l2{transform:translateY(-4px) rotate(-45deg)}
 </style>
 </head>
 <body>
@@ -145,7 +149,7 @@ html{scroll-behavior:smooth}
         <a class="btn" href="https://www.fresha.com/a/aesthetic-erica-cucato-deerfield-beach-florida-eua-608-federal-highway-nnwquaw9" style="text-decoration: none; background: #3B2A26; color: #F7F0EB; padding: 13px 26px; border-radius: 999px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase">Book now</a>
       </div>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" style="width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(59,42,38,.25); background: transparent; align-items: center; justify-content: center; cursor: pointer; color: #3B2A26">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path class="l1" d="M4 8h16"></path><path class="l2" d="M4 16h16"></path></svg>
       </button>
     </nav>
     <div id="mobileMenu" hidden class="pop" style="display: flex; flex-direction: column; gap: 4px; padding: 8px 22px 24px; font-family: 'Cormorant Garamond', serif; font-size: 28px">
@@ -540,8 +544,8 @@ html{scroll-behavior:smooth}
 <script>
 (function(){
   var burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
-  burger.addEventListener('click',function(){var open=menu.hasAttribute('hidden');if(open){menu.removeAttribute('hidden')}else{menu.setAttribute('hidden','')}burger.setAttribute('aria-expanded',open?'true':'false')});
-  menu.querySelectorAll('[data-close]').forEach(function(a){a.addEventListener('click',function(){menu.setAttribute('hidden','');burger.setAttribute('aria-expanded','false')})});
+  burger.addEventListener('click',function(){var open=menu.hasAttribute('hidden');if(open){menu.removeAttribute('hidden')}else{menu.setAttribute('hidden','')}burger.setAttribute('aria-expanded',open?'true':'false');burger.setAttribute('aria-label',open?'Close menu':'Open menu')});
+  menu.querySelectorAll('[data-close]').forEach(function(a){a.addEventListener('click',function(){menu.setAttribute('hidden','');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu')})});
 
 
   var feat=document.getElementById('feat'),ft=document.getElementById('featToggle');
